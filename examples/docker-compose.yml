@@ -6,16 +6,16 @@ services:
     image: tiredofit/discourse:latest
     labels:
       - traefik.enable=true
-      - traefik.http.routers.discuss-selfdesign-org.rule=Host(`discourse.example.com`)
-      - traefik.http.services.discuss-selfdesign-org.loadbalancer.server.port=3000
+      - traefik.http.routers.discourse-selfdesign-org.rule=Host(`discourse.example.com`)
+      - traefik.http.services.discourse-selfdesign-org.loadbalancer.server.port=3000
     volumes:
       - ./logs:/app/log
       - ./uploads:/app/public/uploads
-      - ./backups:/app/public/backups 
-    environment: 
+      - ./backups:/app/public/backups
+    environment:
       - TIMEZONE=America/Vancouver
       - ZABBIX_HOSTNAME=discourse-app
-      
+
       - DISCOURSE_DB_HOST=discourse-db
       - DISCOURSE_DB_PASSWORD=password
       - DISCOURSE_REDIS_HOST=discourse-redis
@@ -68,14 +68,14 @@ services:
       - services
     restart: always
 
-  discuss-redis:
+  discourse-redis:
     image: tiredofit/redis:latest
-    container_name: discuss-selfdesign-org-redis
+    container_name: discourse-selfdesign-org-redis
     volumes:
       - ./redis:/var/lib/redis
     environment:
       - TIMEZONE=America/Vancouver
-      - ZABBIX_HOSTNAME=discuss-redis
+      - ZABBIX_HOSTNAME=discourse-redis
     networks:
       - services
     restart: always
