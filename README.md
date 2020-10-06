@@ -65,6 +65,7 @@ To get started:
 - cd to the examples directory
 - update the `DISCOURSE_HOSTNAME`, `DISCOURSE_DEVELOPER_EMAILS`
 - optionally expose map port 3000 of the discourse-app service to port 80, so it reachable without 
+- run `$ docker-compose up`
 ```
 # …
     networks:
