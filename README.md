@@ -61,6 +61,23 @@ The following image tags are available:
 * Set various [environment variables](#environment-variables) to understand the capabilities of this image.
 * Map [persistent storage](#data-volumes) for access to configuration and data files for backup.
 
+To get started:
+- cd to the examples directory
+- update the DISCOURSE_HOSTNAME, DISCOURSE_DEVELOPER_EMAILS
+- optionally expose map port 3000 of the discourse-app service to port 80, so it reachable without 
+```
+# …
+    networks:
+      - proxy
+      - services
+    ports:
+      - 80:3000
+````
+
+If JS files have are not loading try regenerate them
+- `$ docker exec -it discourse-app bash`
+- `$ rails assets:precompile`
+
 ## Configuration
 
 ### Data-Volumes
